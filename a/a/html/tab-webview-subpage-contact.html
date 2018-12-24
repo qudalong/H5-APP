@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<style type="text/css">
+		.mui-control-item {
+			line-height: 34px !important;
+		}
+		.mui-active {
+			border-bottom: 2px solid #C40000  !important;
+		}
+	</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">朋友圈</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll top-nav" style="width: 100%;">
+						<a class="mui-control-item mui-active item" href="#item1mobile1" data-wid="index11.html">
+							通讯录
+						</a>
+						<a class="mui-control-item item" href="#item2mobile1" data-wid="index22.html">
+							朋友圈
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/webviewGroup.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+				mui.plusReady(function() {
+					
+					// 创建子webview窗口 并初始化
+					var aniShow = {};
+//					util.initSubpage(aniShow);
+
+					var nview = plus.nativeObj.View.getViewById('tabBar'),
+						activePage = plus.webview.currentWebview(),
+						targetPage,
+//						subpages = util.options.subpages,
+						pageW = window.innerWidth,
+						currIndex = 0;
+						
+
+					/**
+					 * 根据判断view控件点击位置判断切换的tab
+					 */
+				mui(".mui-scroll").on("tap", ".mui-control-item", function(e) {
+						var wid = this.getAttribute("data-wid");
+						group.switchTab(wid);
+					});
+					var _self = plus.webview.currentWebview();
+					var group = new webviewGroup(_self.id, {
+						items: [{
+							id: "index11.html",
+							url: "index11.html",
+							extras: {}
+						}, {
+							id: "index22.html",
+							url: "index22.html",
+							extras: {}
+						}],
+						onChange: function(obj) {
+							var c = document.querySelector(".mui-control-item.mui-active");
+							if(c) {
+								c.classList.remove("mui-active");
+							}
+							var target = document.querySelector(".mui-scroll .mui-control-item:nth-child(" + (parseInt(obj.index) + 1) + ")");
+							target.classList.add("mui-active");
+							if(target.scrollIntoView) {
+								target.scrollIntoView();
+							}
+						}
+					});
+					mui(".mui-scroll").on("tap", ".mui-control-item", function(e) {
+						var wid = this.getAttribute("data-wid");
+						group.switchTab(wid);
+					});
+					
+					
+					
+
+				});
+			})();
+		</script>
+</html>
