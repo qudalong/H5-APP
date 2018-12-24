@@ -134,6 +134,8 @@
 				for(var i = cells.length, len = i + 1; i < len; i++) {
 					var div = document.createElement('div');
 					div.className = 'list';
+					div.setAttribute('id', './details.html');
+					div.setAttribute('onclick', 'clicked(this.id)' );
 					div.innerHTML ="<div class='item'><img class='head' src='../img/gsjj.png' /><div class='name'>李建国</div></div><i class='icon-tel'></i>";
 					table.insertBefore(div, table.lastChild);
 				}
@@ -153,6 +155,8 @@
 				for(var i = cells.length, len = i + 1; i < len; i++) {
 					var div = document.createElement('div');
 					div.className = 'list';
+					div.setAttribute('id', './details.html');
+					div.setAttribute('onclick', 'clicked(this.id)' );
 					div.innerHTML ="<div class='item'><img class='head' src='../img/gsjj.png' /><div class='name'>李建国</div></div><i class='icon-tel'></i>";
 					table.appendChild(div);
 				}

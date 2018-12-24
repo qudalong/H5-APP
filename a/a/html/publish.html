@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
 		<title>朋友圈</title>
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
-		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<script type="text/javascript">
 			(function() {
 				function w() {
@@ -32,11 +32,51 @@
 	</head>
 
 	<body>
-		<article class="">
-			<textarea name="" rows="3" cols="3" placeholder="哈哈"></textarea>
-			<img src="../images/ma.png"/>
-			<img src="../images/60x60.gif"/>
+		<article class="publish-wrap">
+			<textarea class="textarea" placeholder="这一刻的想法..."></textarea>
+			<div class="img-list" id="imgList"></div>
+			<img class="add-img" src="../img/add_img_big.png" />
 		</article>
 	</body>
+	<script type="text/javascript">
+		var imgPathArr = localStorage.getItem("imgPathArr").split(",");
+		var captureImage = localStorage.getItem("captureImage").split(",");
+		var video = localStorage.getItem("video");
+		
+		
+		if(video){
+			console.log('这有video')
+			var imgList = document.getElementById('imgList');
+				var video = document.createElement('video');
+				video.className = 'item';
+				video.src = video;
+				console.log(video)
+				imgList.appendChild(video);
+		}
+		
+		//手机相册
+		if(imgPathArr.length && imgPathArr[0] != "") {
+			for(var i in imgPathArr) {
+				var imgList = document.getElementById('imgList');
+				var img = document.createElement('img');
+				img.className = 'item';
+				img.src = imgPathArr[i];
+				console.log(imgPathArr[i])
+				imgList.appendChild(img);
+			}
+		}
+		
+		//相机
+		if(captureImage.length && captureImage[0] != "") {
+			for(var i in captureImage) {
+				var imgList = document.getElementById('imgList');
+				var img = document.createElement('img');
+				console.log(captureImage[i])
+				img.className = 'item';
+				img.src = captureImage[i];
+				imgList.appendChild(img);
+			}
+		}
+	</script>
 
 </html>

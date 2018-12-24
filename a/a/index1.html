@@ -31,42 +31,6 @@
 			 * @param {Object} a	页面动画内心，默认使用全局as设置的值
 			 * @param {Object} s	是否不显示窗口
 			 */
-			function clicked(id, a, s) {
-				if(_openw) {
-					return;
-				}
-				a || (a = as);
-				_openw = preate[id];
-				if(_openw) {
-					_openw.showded = true;
-					_openw.show(a, null, function() {
-						_openw = null; //避免快速点击打开多个页面
-					});
-				} else {
-					_openw = plus.webview.create(id, id, {
-						scrollIndicator: 'none',
-						scalable: false,
-						popGesture: 'close'
-					});
-					preate[id] = _openw;
-					_openw.addEventListener('loaded', function() { //叶面加载完成后才显示
-						_openw.showded = true;
-						s || _openw.show(a, null, function() {
-							_openw = null; //避免快速点击打开多个页面
-						});
-						s && (_openw = null); //避免s模式下变量无法重置
-					}, false);
-					_openw.addEventListener('hide', function() {
-						_openw && (_openw.showded = true);
-						_openw = null;
-					}, false);
-					_openw.addEventListener('close', function() { //页面关闭后可再次打开
-						_openw = null;
-						preate[id] && (preate[id] = null); //兼容窗口的关闭
-					}, false);
-				}
-			}
-
 			(function() {
 				function w() {
 					var r = document.documentElement;
@@ -95,7 +59,7 @@
 					<div class="nav-item">
 						<div class="classify-item">
 							<div class="target">L</div>
-							<div id="./details.html" class="list" onclick="clicked(this.id)">
+							<div class="list">
 								<div class="item">
 									<img class="head" src="img/gsjj.png" />
 									<div class="name">李建国</div>
