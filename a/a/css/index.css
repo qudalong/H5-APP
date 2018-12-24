@@ -103,13 +103,6 @@ a {
 	margin-right: 0.1rem;
 }
 
-.classify-item .list .icon-tel {
-	height: 0.3rem;
-	width: 0.3rem;
-	display: block;
-	background: url(../img/icon_tel.png) no-repeat center;
-	background-size: 0.3rem 0.3rem;
-}
 
 .footer-fixed {
 	position: fixed;
@@ -218,7 +211,7 @@ a {
 }
 
 .personage-info .info .account {
-	color: #ccc;
+	color: #888;
 	margin-top: 0.1rem;
 }
 
@@ -284,14 +277,6 @@ a {
 	height: 0.8rem;
 	margin-right: 0.1rem;
 	display: block;
-}
-
-.icon-right {
-	display: block;
-	height: 0.12rem;
-	width: 0.12rem;
-	background: url(../img/icon_right.png) no-repeat center;
-	background-size: 0.12rem 0.12rem;
 }
 
 .fixed-bot {
@@ -369,13 +354,6 @@ a {
 	align-items: center;
 }
 
-.dynamic-list .item .dynamic .icon-like {
-	display: block;
-	height: 0.23rem;
-	width: 0.23rem;
-	background: url(../img/icon_like.png) no-repeat center;
-	background-size: 0.23rem 0.23rem;
-}
 .dynamic-list .item .dynamic-marking  {
 	font-size: 0.14rem;
 }
@@ -404,4 +382,16 @@ a {
 .add-img{
 	width: 1rem;
 	height: 1rem;
+}
+
+/*mui 图标字体*/
+.icon-weibiaoti1{
+	color: #C40000;
+}
+.icon-iconfontzhizuobiaozhun44{
+	color: #888;
+}
+.mui-icon-arrowright{
+	font-size:0.18rem;
+	color: #999;
 }
