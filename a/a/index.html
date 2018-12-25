@@ -50,17 +50,20 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">朋友圈</h1>
+			<h1 class="mui-title">不忘初心</h1>
 		</header>
 		<div class="mui-content">
 			<div id="slider" class="mui-slider mui-fullscreen">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll top-nav" style="width: 100%;">
 						<a class="mui-control-item mui-active item" href="#item1mobile" data-wid="index1.html">
-							通讯录
+							时事看点
 						</a>
 						<a class="mui-control-item item" href="#item2mobile" data-wid="index2.html">
-							朋友圈
+							专题资料
+						</a>
+						<a class="mui-control-item item" href="#item3mobile" data-wid="index3.html">
+							先锋故事
 						</a>
 					</div>
 				</div>
@@ -125,6 +128,9 @@
 							plus.webview.open('html/new-webview.html', 'new', {}, 'slide-in-right', 200);
 						}
 					});
+					
+					
+					//头部导航滑动
 					mui(".mui-scroll").on("tap", ".mui-control-item", function(e) {
 						var wid = this.getAttribute("data-wid");
 						group.switchTab(wid);
@@ -139,6 +145,10 @@
 							id: "index2.html",
 							url: "index2.html",
 							extras: {}
+						}, {
+							id: "index3.html",
+							url: "index3.html",
+							extras: {}
 						}],
 						onChange: function(obj) {
 							var c = document.querySelector(".mui-control-item.mui-active");
@@ -146,7 +156,6 @@
 								c.classList.remove("mui-active");
 							}
 							var target = document.querySelector(".mui-scroll .mui-control-item:nth-child(" + (parseInt(obj.index) + 1) + ")");
-							console.log(target)
 							target.classList.add("mui-active");
 							if(target.scrollIntoView) {
 								target.scrollIntoView();
